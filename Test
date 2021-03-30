@@ -1,0 +1,56 @@
+
+.OPEN history.db
+
+CREATE TABLE IF NOT EXISTS users
+(id INTEGER PRIMARY KEY AUTOINCREMENT,
+Username TEXT,
+User_Info TEXT);
+
+CREATE TABLE IF NOT EXISTS profiles
+(id INTEGER PRIMARY KEY AUTOINCREMENT,
+user_id INTEGER,
+name VARCHAR(50),
+info TEXT,
+count_prof_in INTEGER);
+
+CREATE TABLE IF NOT EXISTS logs
+(id INTEGER PRIMARY KEY AUTOINCREMENT,
+profile_id INTEGER,
+time_action DATETIME, 
+link TEXT,
+action TEXT);
+
+INSERT INTO users(Username, User_info) 
+VALUES ('Xandr','second user');
+
+INSERT INTO users(Username, User_info) 
+VALUES ('Olga','3-rd user');
+
+INSERT INTO users(Username, User_info) 
+VALUES ('Vicki','4-rd user');
+
+INSERT INTO profiles (user_id, name, info, count_prof_in)
+VALUES (1, 'Prof1','Profile one for Vladimir', 0);
+
+INSERT INTO profiles (user_id, name, info, count_prof_in)
+VALUES (1, 'Prof2','Profile two for Vladimir', 0);
+
+INSERT INTO profiles (user_id, name, info, count_prof_in)
+VALUES (1, 'Prof3','Profile three for Vladimir', 0);
+
+INSERT INTO profiles (user_id, name, info, count_prof_in)
+VALUES (1, 'Prof4','Profile one for Xandr', 0);
+
+UPDATE profiles SET user_id=2 where id=4;
+
+SELECT datetime('now', 'localtime');
+
+
+INSERT INTO logs('profile_id','time_action','link','action')
+Values (1,datetime('now','localtime'),'http://ya.ru','ok');
+
+INSERT INTO logs('profile_id','time_action','link','action')
+Values (1,datetime('now','localtime'),'http://gosuslugi.ru','ok');
+
+INSERT INTO logs('profile_id','time_action','link','action')
+Values (2,'2021-03-26 21:03:00','http://google.com','ok');
